@@ -33,7 +33,7 @@ $(LIB_DIR)/libgui.so: $(OBJS)
 	@echo "\033[35m Linking " $@ "\033[0m"
 	$(CXX) -shared $(CXXOPT) -L$(OPENGLLIBROOT)  -o $@ $(OBJS) -L$(LIB_DIR)  -Wl,-rpath=$(LIB_DIR) --enable-new-dtags -lglut -lGLU -lGL 
 
-thirdparty: thirdparty/build
+thirdparty:
 	(cd thirdparty; ./install.sh)
 
 doc:
@@ -57,4 +57,4 @@ $(OBJ_DIR)/context.o: $(INCL_DIR)/context.hpp $(SRC_DIR)/context.cpp
 $(OBJ_DIR)/event_manager.o: $(INCL_DIR)/event_manager.hpp $(SRC_DIR)/event_manager.cpp
 $(OBJ_DIR)/window.o: $(INCL_DIR)/window.hpp $(SRC_DIR)/window.cpp
 
-.PHONY: doc $(PROJECT_ROOT)/include
+.PHONY: thirdparty doc $(PROJECT_ROOT)/include
